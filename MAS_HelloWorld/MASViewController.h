@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MAS_HelloWorldView;
 
-@interface MASViewController : UIViewController
+@interface MASViewController : UIViewController<UITextFieldDelegate>
+{
+    
+    MAS_HelloWorldView     *_mainView;
+}
 
+-(void)clickMethod:(id)sender;
 @end

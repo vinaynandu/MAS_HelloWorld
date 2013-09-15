@@ -7,6 +7,7 @@
 //
 
 #import "MASViewController.h"
+#import "MAS_HelloWorldView.h"
 
 @interface MASViewController ()
 
@@ -20,6 +21,25 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)loadView
+{
+    _mainView =[[MAS_HelloWorldView alloc] initWithTarget:self];
+    self.title = @"HelloWorld";
+    
+    [_mainView createUIViewElements];
+    
+    self.view = _mainView;
+}
+
+-(void)clickMethod:(id)sender
+{
+    _mainView.helloWorldLbl.text= _mainView.inputTextField.text;
+    
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

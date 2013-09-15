@@ -11,14 +11,23 @@
 #import "MASViewController.h"
 
 @implementation MASAppDelegate
-
+@synthesize viewController;
+@synthesize navigationController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.viewController = [[MASViewController alloc] initWithNibName:@"MASViewController" bundle:nil];
-    self.window.rootViewController = self.viewController;
+    self.window.windowLevel = UIWindowLevelNormal;
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    
+     viewController = [[MASViewController alloc] init];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    self.window.rootViewController = self.navigationController;
+    self.navigationController.navigationBarHidden=NO;
+    self.window.multipleTouchEnabled = NO;
+    self.window.exclusiveTouch = YES;
     [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 
